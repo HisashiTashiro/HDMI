@@ -1,0 +1,53 @@
+// Place all the styles related to the users controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+.maipejinotaitoru{
+    font-size:40px;
+    display: flex;
+    justify-content: center; 
+}
+.second-block-mypage{
+    margin-top:30px;
+    padding-top:100px;
+    background-color:#000;
+    padding-bottom:50px;
+    background: linear-gradient(45deg, #021579, #000, #1D0560);
+}
+.yuzaname{
+    font-size:50px;
+    display: flex;
+    justify-content: center; /* 水平方向中央揃え */
+    align-items: center; /* 垂直方向中央揃え */ 
+    color:#fff;
+}
+.yuzaname2{
+    font-size:50px;
+    display: flex;
+    justify-content: center; /* 水平方向中央揃え */
+    align-items: center; /* 垂直方向中央揃え */ 
+    color:#fff;
+}
+.hennsyuuroguoutiine{
+    display: flex;
+    margin-top:250px;
+    font-size:25px;
+}
+.box {
+    flex: 1;
+    padding: 10px;
+}
+.item {
+    width: calc(25% - 10px); /* 要素の幅を均等に設定（マージンの分を引く） */
+    margin: 0 5px; /* 要素の間にスペースを追加 */
+    color: white;
+    text-align:center;
+    padding: 10px;
+    border-radius: 5px;
+    font-size:60px;
+}
+.item p{
+    font-size:30px;
+}
+.rogo{
+    width:4vw;
+}

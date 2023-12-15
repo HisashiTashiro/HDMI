@@ -1,0 +1,62 @@
+<div class="shousai">
+ <h1>投稿詳細</h1>
+ <div class="tweet">
+   <p><%= @combination.about %></p>
+   <p><%= @combination.created_at %></p>
+ </div>
+ <p>＃ハッシュタグ</p>
+   <strong>Hashbody:</strong>
+   <%= render_with_hashtags(@combination.hashbody) %>
+
+ <% if user_signed_in? %>
+     <% if current_user.already_liked?(@combination) %>
+         <%= link_to combination_like_path(@combination), method: :delete do %>
+            
+             <i class="fas fa-heart"></i><%= @combination.likes.count %>
+        
+         <% end %>
+     <% else %>
+         <%= link_to combination_likes_path(@combination), method: :post do %>
+            
+             <i class="far fa-heart"></i><%= @combination.likes.count %>
+        
+         <% end %>
+     <% end %>
+ <% else %>
+    
+     <i class="far fa-heart"></i><%= @combination.likes.count %>
+
+ <% end %>
+
+
+
+ <h4>いいねしたユーザー</h4>
+ <% @combination.liked_users.each do |user| %>
+   <li><%= user.email %></li>
+ <% end %>
+
+ <div class="comment-wrapper">
+   <p>コメント一覧</p>
+   <% @comments.each do |c| %>
+     <div>
+       <%= c.user.email unless c.user.blank? %>
+       <br>
+       <%= c.content %>
+     </div>
+       <br>
+   <% end %>
+
+   <% if user_signed_in? %>
+     <%= form_with(model: [@combination, @comment], local: true) do |f| %>
+       <%= f.text_area :content %>
+       <%= button_tag type: "submit" do %>
+         <i class="far fa-comments"></i> コメントする
+       <% end %>
+     <% end %>
+   <% end %>
+ </div>
+
+
+ <%= link_to "編集する", edit_combination_path(@combination.id) %>
+ <%= link_to "combination一覧に戻る", combinations_path %>
+</div>

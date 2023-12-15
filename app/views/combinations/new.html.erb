@@ -1,0 +1,25 @@
+<div class="newpage">
+<h2>新規投稿</h2>
+<%= form_for @combination do |f| %>
+
+  <div class="field">
+    <%= f.label :概要  %><br>
+    <%= f.text_area :about, :size => "30x2" %><br>
+  </div>
+  <div class="field">
+    <%= f.label :item  %><br>
+    <%= f.text_area :kind, :size => "30x2" %><br>
+  </div>
+  <p>ハッシュタグ入力欄</p>
+  <%= f.text_area :hashbody, size:"55x3" %>
+  <div class="field">
+    <%= f.label :image %>
+    <%= f.file_field :image %>
+  </div>
+
+
+   <%= f.submit "投稿する" %>
+  <% end %>
+  
+  <%= link_to "一覧に戻る", combinations_path %>
+</div>

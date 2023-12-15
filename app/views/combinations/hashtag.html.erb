@@ -1,0 +1,19 @@
+<h2>ハッシュタグ </h2>
+ <%= @hashtag.hashname %>
+ <div class= "hashtag-name">
+    <% @hashtags.sort.reverse.each do |count| %>
+        <% count[1].each do |hashtag| %>
+            <p><%= link_to  "##{hashtag.hashname} (#{hashtag.combinations.count}) 件","/combination/hashtag/#{hashtag.hashname}",data: {"turbolinks" => false} %>
+            </p>
+        <% end %>
+    <% end %>
+  </div>
+    <ul>
+        <% @combination.each do |t| %>
+        <li>
+            <%= t.about %>
+        </li>    
+        <% end %>
+    </ul>
+    
+<%= link_to 'Back', combinations_path %>

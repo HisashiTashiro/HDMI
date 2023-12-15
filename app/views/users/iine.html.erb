@@ -1,0 +1,29 @@
+<h2>ユーザーがいいねした投稿一覧</h2>
+<h3><%= link_to "マイページトップへ", user_path(current_user.id) %></h3>
+    <% @user.liked_combinations.each do |t| %>
+        <div style = 'margin:20px; border:2px double black; width:500px;padding-left:20px;he'>
+            <%= image_tag t.image_url, size: "250x200" if t.image? %>
+            <%= t.user.email %>
+            <%= t.about %>
+            <%= t.kind %>
+            <%= render_with_hashtags(t.hashbody) %>
+        </div>
+        <% if user_signed_in? %>
+          <% if current_user.already_liked?(t) %>
+             <%= button_to combination_like_path(id: t.id, combination_id: t.id), method: :delete do %>
+                 <i class="fas fa-heart"></i><%= t.likes.count %>
+             <% end %>
+          <% else %>
+             <%= button_to combination_likes_path(id: t.id, combination_id: t.id), method: :post do %>
+         
+                <i class="far fa-heart"></i><%= t.likes.count %>
+         
+             <% end %>
+          <% end %>
+      <% else %>
+ 
+          <i class="far fa-heart"></i><%= t.likes.count %>
+ 
+      <% end %>
+      <%= link_to "詳細へ", combination_path(t.id) %>
+      <% end %>
